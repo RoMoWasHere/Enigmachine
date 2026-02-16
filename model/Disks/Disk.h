@@ -1,10 +1,13 @@
 #ifndef DISK_H
 #define DISK_H
 
-#include "utils/LinkedList.h"
-#include "Disk.h"
 #include <iostream>
 #include <vector>
+
+typedef struct Node {
+    Node* next;
+    Node* prev;
+} Node;
 
 class Disk {
 
@@ -16,8 +19,9 @@ class Disk {
         ~Disk();
 
     protected:
-        std::vector<char*> entries;
-        std::vector<char> outs;
+        std::vector<Node> outs;
+
+        Node findPath(Node node, bool bck);
 
 };
 
